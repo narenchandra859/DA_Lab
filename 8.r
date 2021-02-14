@@ -74,6 +74,11 @@ getClass <- function(x){
 model <- glm(default ~ student + balance + income, data = train, family = binomial)
 
 # calculate
+
+# get parameters
+
+params <- logisticReg(x_train,y_train)
+
 pred <- sapply(apply(x_train,1,getPred),getClass)
 predLib <- sapply(predict(model,x_train,type='response'),getClass)
 
@@ -83,3 +88,6 @@ table(pred,y_train)
 print("Confusion Matrix for LR using Library Function")
 table(predLib,y_train)
 
+model
+params
+model$coefficients
