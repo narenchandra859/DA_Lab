@@ -15,7 +15,7 @@ df <- data.frame(
   usn = c(101, 102, 103, 104, 105, 106, 107),
   address = c("Blr", "Blr", "Mys", "Blr", "Blr", "Blr", "Mys"),
   dept = c("CSE","CSE","CSE","CSE","CSE","CSE","CSE"),
-  cgpa = c(9.04, 9.56, NA, 100.10, -2.0, 9.0, 9.25)
+  cgpa = c(9.04, 9.56, NA, 100.10, -2.0, "90%", 9.25)
 )
 df
 
