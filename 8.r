@@ -3,6 +3,8 @@
 #   Do the predictions of defaulter:
 #     a. Using predefined functions.
 #     b. Without using predefined functions
+# refer: https://web.stanford.edu/class/archive/cs/cs109/cs109.1178/lectureHandouts/220-logistic-regression.pdf
+# refer: https://github.com/pranavh4/Data-Analytics-Lab/blob/master/Q8%20-%20Logistic%20Regression.Rmd
 
 library(ISLR)
 df <- Default
@@ -36,7 +38,7 @@ logisticReg <- function(X,Y,lr=1,threshold=0.1){
   prev_loss <- 0.0
   diff <- Inf
   
-  while(diff>threshold){
+  for(i in 1:100000) {
     curr_loss <- 0.0
     gradient <- rep(0,length(params))
     diff <- 0
@@ -88,6 +90,5 @@ table(pred,y_train)
 print("Confusion Matrix for LR using Library Function")
 table(predLib,y_train)
 
-model
 params
 model$coefficients

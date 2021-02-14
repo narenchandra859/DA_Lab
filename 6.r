@@ -2,6 +2,8 @@
 # Compare your results with predefined functions. Consider K=1 and do the classification. 
 # Then you have to classify for k=2, K=3. Loan-defaulters.csv file has the following fields : age,loan,defaulter-status.
 
+# refer: https://github.com/pranavh4/Data-Analytics-Lab/blob/master/Q9%20-%20LDA%20and%20QDA.R
+
 # testing on same data, if required just create another Age,Loans set to test on
 
 library(class)

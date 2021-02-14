@@ -37,3 +37,4 @@ df
 df$cgpa[is.na(df$cgpa)] <- mean(df$cgpa, na.rm = TRUE)
 
 df
+
