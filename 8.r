@@ -17,14 +17,13 @@ train_ind = sample.int(nrow(df),size = 0.75*nrow(df))
 train <- df[train_ind,]
 test <- df[-train_ind,]
 
-# min max scale BALANCE and INCOME
-max_bal <- max(train['balance'])
-min_bal <- min(train['balance'])
-max_inc <- max(train['income'])
-min_inc <- min(train['income'])
-
-train['balance'] <- apply(train['balance'],1,function(x) return((x-min_bal)/(max_bal-min_bal)))
-train['income'] <- apply(train['income'],1,function(x) return((x-min_inc)/(max_inc-min_inc)))
+# min max normalize
+normalize <- function(x)
+{
+  return((x- min(x)) /(max(x)-min(x)))
+}
+train['balance'] <- sapply(train['balance'], normalize)
+train['income'] <- sapply(train['income'], normalize)
 
 #split x, y
 x_train <- train[,-1]
@@ -33,30 +32,16 @@ x_test <- train[,-1]
 y_test <- train[,1]
 
 # logreg
-logisticReg <- function(X,Y,lr=1,threshold=0.1){
+logisticReg <- function(X,Y,lr=1){
   params <- rep(0,ncol(x_train)+1)
-  prev_loss <- 0.0
-  diff <- Inf
-  
-  for(i in 1:100000) {
-    curr_loss <- 0.0
-    gradient <- rep(0,length(params))
-    diff <- 0
-    
+  for(i in 1:10) {
     for(row in 1:nrow(X)){
       x<-as.numeric(c(list(1),X[row,]))
       pred <- as.double(1/as.double(1+exp(-(x%*%params))))
       loss <- Y[row] - pred
-      curr_loss <- curr_loss + (loss^2)
       for(p in 1:length(params))
         params[p] <- params[p] + lr*x[p]*loss
     }
-    
-    curr_loss <- sqrt(curr_loss)
-    diff <- abs(curr_loss-prev_loss)
-    prev_loss <- curr_loss
-    print(curr_loss)
-    
   }
   return(params)
 }
@@ -75,10 +60,7 @@ getClass <- function(x){
 # inbuilt
 model <- glm(default ~ student + balance + income, data = train, family = binomial)
 
-# calculate
-
 # get parameters
-
 params <- logisticReg(x_train,y_train)
 
 pred <- sapply(apply(x_train,1,getPred),getClass)
