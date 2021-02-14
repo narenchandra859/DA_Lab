@@ -35,10 +35,10 @@ y_test <- train[,1]
 # logreg
 logisticReg <- function(X,Y,lr=1,threshold=0.1){
   params <- rep(0,ncol(x_train)+1)
-  prev_loss <- 0.0
-  diff <- Inf
-  
-  for(i in 1:100000) {
+  # prev_loss <- 0.0
+  # diff <- Inf
+  # while (diff > threshold)
+  for(i in 1:100) {
     curr_loss <- 0.0
     gradient <- rep(0,length(params))
     diff <- 0
@@ -47,15 +47,15 @@ logisticReg <- function(X,Y,lr=1,threshold=0.1){
       x<-as.numeric(c(list(1),X[row,]))
       pred <- as.double(1/as.double(1+exp(-(x%*%params))))
       loss <- Y[row] - pred
-      curr_loss <- curr_loss + (loss^2)
+      #curr_loss <- curr_loss + (loss^2)
       for(p in 1:length(params))
         params[p] <- params[p] + lr*x[p]*loss
     }
     
-    curr_loss <- sqrt(curr_loss)
-    diff <- abs(curr_loss-prev_loss)
-    prev_loss <- curr_loss
-    print(curr_loss)
+    #curr_loss <- sqrt(curr_loss)
+    #diff <- abs(curr_loss-prev_loss)
+    #prev_loss <- curr_loss
+    #print(curr_loss)
     
   }
   return(params)
