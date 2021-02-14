@@ -21,7 +21,7 @@ df$pred_builtin = predict(model, data = df)
 # b. Using normal equation method 
 
 x <- df[,2:3]
-x$intercept <- 1 
+x$intercept <- rep(1,nrow(data))
 x <- as.matrix(x)
 x_transpose = t(x)
 
