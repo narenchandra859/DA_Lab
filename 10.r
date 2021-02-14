@@ -30,7 +30,7 @@ v_a <- sum(df$votes[df$party == "A"])/sum(df$votes)*100
 v_b <- sum(df$votes[df$party == "B"])/sum(df$votes)*100
 v_c <- sum(df$votes[df$party == "C"])/sum(df$votes)*100
 v <- c(v_a, v_b, v_c)
-pie(v, labels = paste(round(as.numeric(v), 1)), main = paste("Vote share per party"), col = rainbow(length(x)))
+pie(v, labels = paste(round(as.numeric(v), 1)), main = paste("Vote share (%) per party"), col = rainbow(length(x)))
 legend("topright", legend = labels, fill = rainbow(length(x)), cex = 1)
 
 

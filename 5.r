@@ -11,7 +11,6 @@ df = data.frame(
   budget_tv = c(5,15,25,30,35,50,100),
   budget_radio = c(7,12,17,25,30,35,70)
 )
-
 df
 
 # a

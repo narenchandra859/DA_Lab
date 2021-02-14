@@ -27,7 +27,7 @@ df$name <- toTitleCase(tolower(df$name))
 
 # e
 df$cgpa <- as.character(df$cgpa)
-df$cgpa <- ifelse(grepl('%', df$cgpa), as.numeric(gsub('%', '', df$cgpa)), as.numeric(df$cgpa))
+df$cgpa <- ifelse(grepl('%', df$cgpa), as.numeric(gsub('%', '', df$cgpa))/10, as.numeric(df$cgpa))
 
 # d
 df <- df[!(df$cgpa %in% boxplot(df$cgpa)$out),]

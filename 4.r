@@ -32,7 +32,6 @@ print('Scratch ')
 print(c(intercept=b0,budget=b1))
 
 # compare
-
 plot(df$budget, df$sales)
 lines(df$budget, df$pred_builtin, col = "blue")
 plot(df$budget, df$sales)

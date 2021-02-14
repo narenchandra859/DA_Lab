@@ -3,11 +3,10 @@
 #   Do the predictions of defaulter:
 #   a. Using predefined functions.
 
-#LDA 
-
 library(ISLR) #credit card dataset 
 library(MASS)
 
+#LDA 
 df = Default
 df
 
@@ -22,7 +21,6 @@ test$pred = predict(model, test)$class
 table(test$pred, test$default)
 
 #QDA
-
 df = Default
 
 df$student = as.factor(as.numeric(df$student))

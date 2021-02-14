@@ -26,7 +26,7 @@ df$name <- toTitleCase(tolower(df$name))
 
 # e
 df$salary <- as.character(df$salary)
-df$salary <- ifelse(grepl('[[:alpha:]]', df$salary), as.numeric(gsub('[[:alpha:]]', '', df$salary)), as.numeric(df$salary))
+df$salary <- as.numeric(gsub('[[:alpha:]]', '', df$salary)))
 
 # d
 df <- df[!(df$salary %in% boxplot(df$salary)$out),]

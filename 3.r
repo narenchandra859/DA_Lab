@@ -28,7 +28,7 @@ df <- df[!(df$avgPubl %in% boxplot(df$avgPubl)$out),]
 
 # e 
 df$numStaff <- as.character(df$numStaff)
-df$numStaff <- ifelse(grepl('[[:alpha:]]', df$numStaff), as.numeric(gsub('[[:alpha:]]', '', df$numStaff)), as.numeric(df$numStaff))
+df$numStaff <- as.numeric(gsub('[[:alpha:]]', '', df$numStaff))
 
 # c
 df$numStaff[is.na(df$numStaff)] <- mean(df$numStaff, na.rm = TRUE)

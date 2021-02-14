@@ -22,7 +22,7 @@ ele = data.frame(
   labels = c("Party A","party B", "Party C","Party A","party B", "Party C")
 )
 
-boxplot(ele$votes~ele$labels, main = "Party Votes Boxplot", name = ele$labels)
+boxplot(ele$votes~ele$labels, main = "Party Votes Distribution (Boxplot)", name = ele$labels)
 
 
 df <- data.frame(
